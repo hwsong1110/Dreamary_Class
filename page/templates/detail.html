@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Dreamary - Heewon Flatfoam</title>
+    <title>Designer 세부 프로필</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -55,87 +55,61 @@
     <link href="album.css" rel="stylesheet">
 
     <!--CSS Static -->
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
   </head>
 
 
   <body>
+
+
     <header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        <div class="collapse bg-dark" id="navbarHeader">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-8 col-md-7 py-4">
+                <h4 class="text-white">About</h4>
+                <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+              </div>
+              <div class="col-sm-4 offset-md-1 py-4">
+                <h4 class="text-white">Contact</h4>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Follow on Instagram</a></li>
+                  <li><a href="#" class="text-white">Like on Facebook</a></li>
+                  <li><a href="#" class="text-white">Email me : hwsong1110@gmail.com</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Instagram</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me : hwsong1110@gmail.com</a></li>
-          </ul>
+        <div id="navbar" class="navbar navbar-expand-lg navbar-light-bg-light sticky-top">
+          <a id="logo" href="{% url 'home' %}" class="navbar-brand align-self-center">
+              <img src="{% static 'images/sq.PNG' %}" width="35" height="35" alt="sq.PNG">
+              <label class="narvar-brand align-self-center">Developer S.H.W</label>
+          </a>
         </div>
-      </div>
-    </div>
-  </div>
-  <div id="navbar" class="navbar navbar-expand-lg navbar-light-bg-light sticky-top">
-    <a id="logo" href="{% url 'home' %}" class="navbar-brand align-self-center">
-        <img src="{% static 'images/sq.PNG' %}" width="35" height="35" alt="sq.PNG">
-        <label class="narvar-brand align-self-center">Developer S.H.W</label>
-    </a>
-  </div>
-</header>
+      </header>
 
-<main role="main">
 
-  <section class="jumbotron text-center">
-    <div class="container">
-
-      <h1>Heewon Song / Developer</h1>
-      <p class="lead text-muted">Likelion 8th</p>
-      <p class="lead text-muted">based on dreamary project of Likelion</p>
-      <p class="lead text-muted">interest : Chemical-Engineering / Material Science / Computer Science / Data Science</p>
-      <p>
-        <a href="{% url 'introduce' %}" class="btn btn-outline-danger">야생동물 사진 보기</a>
-      </p>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-        <div class="card-columns">
-            {% for designer in designers %}
-            <div class = "card mb-4 shadow-sm">
-                {% if designer.image %}
-                <img src = "{{designer.image.url}}" class="card-img-top" alt="Designer_image">
-                {% else %}
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                fousable="false" role="img" aria-label="Placeholder:Thumbnail">
-                <title>Dreamary</title>
-                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" fill="#eceeef"
-                    dy=".3em">Profile</text>
-                </svg>
-                {% endif %}
-                <div class = "card-body">
-                    <h4 class="card-title">{{ designer.name }}</h4>
-                    <h6 class="card-text">{{ designer.address }}</h6>
-                    <hr>
-                    <p class="card-text">{{  designer.description }}</p>
+      
+    <main role="main">
+        <div class="container">
+            <div id="designer" class="row featurette">
+                <div class="col-md-6">
+                    <h2 class="featurette-heading">{{ designer.name }}<span id="namedeco" class="text-muted">디자이너</span></h2>
+                    <h5 class="featurette-heading">"{{ designer.address }}"에서 활동 중입니다</h5>
+                    <p class="lead">{{ designer.description }}</p>
                     <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a href="{% url 'detail' designer.id %}" class="btn btn-sm btn-outline-secondary">자세히 보기</a>
+                        <div class="btn group">
+                            
                         </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
+            </div class="col-md-4">
+                <img src="{{ designer.image.url }}" width="150%" alt="Designer_Profile_Image">
         </div>
-      </div>
-  </div>
 
-</main>
+
+    </main>
 
 <footer class="text-muted">
   <div class="container">
